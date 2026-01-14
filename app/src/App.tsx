@@ -1,64 +1,60 @@
-import { useState } from 'react'
+import { useMemo } from 'react'
 import { Sandpack } from '@codesandbox/sandpack-react'
 import './App.css'
 import quiz1Html from './quiz-1/index.html?raw'
 import quiz1Js from './quiz-1/index.js?raw'
-import quiz1Css from './quiz-1/style.css?raw'
+import quiz1Css from './quiz-1/styles.css?raw'
+import quiz2Html from './quiz-2/index.html?raw'
+import quiz2Js from './quiz-2/index.js?raw'
+import quiz2Css from './quiz-2/styles.css?raw'
 
-const quizzes = {
+// HTMLファイル内のパスを調整する関数
+const adjustHtmlPaths = (html: string, quizDir: string) => {
+  return html
+    .replace(/href="\.\/style\.css"/g, `href="/${quizDir}/styles.css"`)
+    .replace(/href="\.\/styles\.css"/g, `href="/${quizDir}/styles.css"`)
+    .replace(/src="\.\/script\.js"/g, `src="/${quizDir}/index.js"`)
+    .replace(/src="\.\/index\.js"/g, `src="/${quizDir}/index.js"`)
+}
+
+const quizData = {
   'quiz-1': {
     name: 'Quiz 1',
-    files: {
-      '/index.html': quiz1Html,
-      '/style.css': quiz1Css,
-      '/index.js': quiz1Js,
-    },
-    template: 'vanilla' as const,
+    html: quiz1Html,
+    js: quiz1Js,
+    css: quiz1Css,
   },
   'quiz-2': {
     name: 'Quiz 2',
-    files: {
-      '/index.html': quiz1Html,
-      '/style.css': quiz1Css,
-      '/index.js': quiz1Js,
-    },
-    template: 'vanilla' as const,
+    html: quiz2Html,
+    js: quiz2Js,
+    css: quiz2Css,
   },
 }
 
 function App() {
-  const [selectedQuiz, setSelectedQuiz] = useState<keyof typeof quizzes>('quiz-1')
-  const currentQuiz = quizzes[selectedQuiz]
+  // すべてのquizファイルをディレクトリ構造で含める
+  // 選択されたquizのファイルはルートにも配置（Sandpackのエントリーポイント用）
+  const allFiles = useMemo(() => {
+    const files: Record<string, string> = {}
+
+    // まず、すべてのquizファイルをディレクトリ構造で配置
+    Object.entries(quizData).forEach(([quizId, data]) => {
+      const adjustedHtml = adjustHtmlPaths(data.html, quizId)
+      files[`/${quizId}/index.html`] = adjustedHtml
+      files[`/${quizId}/index.js`] = data.js
+      files[`/${quizId}/styles.css`] = data.css
+    })
+
+    return files
+  }, [])
 
   return (
     <div className="App">
-      <div style={{ padding: '20px', borderBottom: '1px solid #e1e4e8' }}>
-        <label htmlFor="quiz-select" style={{ marginRight: '10px', fontWeight: 'bold' }}>
-          問題を選択:
-        </label>
-        <select
-          id="quiz-select"
-          value={selectedQuiz}
-          onChange={(e) => setSelectedQuiz(e.target.value as keyof typeof quizzes)}
-          style={{
-            padding: '8px 12px',
-            fontSize: '14px',
-            borderRadius: '4px',
-            border: '1px solid #d1d5db',
-            cursor: 'pointer',
-          }}
-        >
-          {Object.keys(quizzes).map((quizId) => (
-            <option key={quizId} value={quizId}>
-              {quizzes[quizId as keyof typeof quizzes].name}
-            </option>
-          ))}
-        </select>
-      </div>
       <Sandpack
-        key={selectedQuiz}
-        template={currentQuiz.template}
-        files={currentQuiz.files}
+        key="unique-key"
+        template="vanilla"
+        files={allFiles}
         options={{
           showConsole: true,
           showLineNumbers: true,
