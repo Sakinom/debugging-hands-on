@@ -1,29 +1,19 @@
-// Level ☆: 各行にコメントで説明を追加してください
-
-// 説明: 
+// Level ☆: for文をforEachに置き換えてください
 const tabs = document.querySelectorAll('.tabs li a');
-// 説明: 
 const contents = document.querySelectorAll('.content');
 
-// 説明: 
 tabs.forEach(clickedItem => {
-  // 説明: 
   clickedItem.addEventListener('click', e => {
-    // 説明: 
     e.preventDefault();
 
-    // 説明: 
     for (let i = 0; i < tabs.length; i++) {
       tabs[i].classList.remove('active');
     };
-    // 説明: 
     clickedItem.classList.add('active');
 
-    // 説明: 
     for (let i = 0; i < tabs.length; i++) {
       contents[i].classList.remove('active');
     };
-    // 説明: 
     document.getElementById(clickedItem.dataset.id).classList.add('active');
   });
 });
