@@ -1,12 +1,12 @@
 import { useMemo } from 'react'
 import { Sandpack } from '@codesandbox/sandpack-react'
 import './App.css'
-import quiz1Html from './quiz-1/index.html?raw'
-import quiz1Js from './quiz-1/index.js?raw'
-import quiz1Css from './quiz-1/styles.css?raw'
-import quiz2Html from './quiz-2/index.html?raw'
-import quiz2Js from './quiz-2/index.js?raw'
-import quiz2Css from './quiz-2/styles.css?raw'
+import hamburgerMenuHtml from './hamburger-menu/index.html?raw'
+import hamburgerMenuJs from './hamburger-menu/index.js?raw'
+import hamburgerMenuCss from './hamburger-menu/styles.css?raw'
+import tabHtml from './tab/index.html?raw'
+import tabJs from './tab/index.js?raw'
+import tabCss from './tab/styles.css?raw'
 
 // HTMLファイル内のパスを調整する関数
 const adjustHtmlPaths = (html: string, quizDir: string) => {
@@ -18,17 +18,17 @@ const adjustHtmlPaths = (html: string, quizDir: string) => {
 }
 
 const quizData = {
-  'quiz-1': {
-    name: 'Quiz 1',
-    html: quiz1Html,
-    js: quiz1Js,
-    css: quiz1Css,
+  'hamburger-menu': {
+    name: 'Hamburger Menu',
+    html: hamburgerMenuHtml,
+    js: hamburgerMenuJs,
+    css: hamburgerMenuCss,
   },
-  'quiz-2': {
-    name: 'Quiz 2',
-    html: quiz2Html,
-    js: quiz2Js,
-    css: quiz2Css,
+  tab: {
+    name: 'Tab Interface',
+    html: tabHtml,
+    js: tabJs,
+    css: tabCss,
   },
 }
 

@@ -1,0 +1,33 @@
+.container {
+  margin: 16px auto;
+  width: 500px;
+}
+.tabs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+.tabs li a {
+  display: inline-block;
+  width: 80px;
+  text-align: center;
+  padding: 8px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 10px 10px 0 0;
+}
+.tabs li a.active {
+  background: #333;
+  color: #fff;
+}
+.content.active {
+  background: #333;
+  color: #fff;
+  min-height: 150px;
+  padding: 12px;
+  display: block;
+}
+.content {
+  display: none;
+}
