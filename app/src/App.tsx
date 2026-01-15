@@ -1,12 +1,15 @@
 import { useMemo } from 'react'
 import { Sandpack } from '@codesandbox/sandpack-react'
 import './App.css'
-import hamburgerMenuHtml from './hamburger-menu/index.html?raw'
-import hamburgerMenuJs from './hamburger-menu/index.js?raw'
-import hamburgerMenuCss from './hamburger-menu/styles.css?raw'
 import tabHtml from './tab/index.html?raw'
 import tabJs from './tab/index.js?raw'
 import tabCss from './tab/styles.css?raw'
+import tabForEachHtml from './tab-forEach/index.html?raw'
+import tabForEachJs from './tab-forEach/index.js?raw'
+import tabForEachCss from './tab-forEach/styles.css?raw'
+import hamburgerMenuHtml from './hamburger-menu/index.html?raw'
+import hamburgerMenuJs from './hamburger-menu/index.js?raw'
+import hamburgerMenuCss from './hamburger-menu/styles.css?raw'
 
 // HTMLファイル内のパスを調整する関数
 const adjustHtmlPaths = (html: string, quizDir: string) => {
@@ -18,17 +21,20 @@ const adjustHtmlPaths = (html: string, quizDir: string) => {
 }
 
 const quizData = {
-  'hamburger-menu': {
-    name: 'Hamburger Menu',
-    html: hamburgerMenuHtml,
-    js: hamburgerMenuJs,
-    css: hamburgerMenuCss,
-  },
-  tab: {
-    name: 'Tab Interface',
+  'no-1': {
     html: tabHtml,
     js: tabJs,
     css: tabCss,
+  },
+  'no-2': {
+    html: tabForEachHtml,
+    js: tabForEachJs,
+    css: tabForEachCss,
+  },
+  'no-3': {
+    html: hamburgerMenuHtml,
+    js: hamburgerMenuJs,
+    css: hamburgerMenuCss,
   },
 }
 
