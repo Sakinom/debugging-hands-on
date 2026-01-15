@@ -93,7 +93,7 @@
             class="p-quiz-box__question__title__text">${quizItem.question}</span>
         </h2>
         <figure class="p-quiz-box__question__image">
-          <img src="https://github.com/Sakinom/debugging-hands-on/tree/main/app/src/assets/img/quiz/img-quiz0${quizItem.id}.png" alt="">
+          <img src="https://github.com/Sakinom/debugging-hands-on/blob/main/app/src/assets/img/quiz/img-quiz0${quizItem.id}.png" alt="">
         </figure>
       </div>
       <div class="p-quiz-box__answer">
