@@ -10,6 +10,9 @@ import tabForEachCss from './tab-forEach/styles.css?raw'
 import hamburgerMenuHtml from './hamburger-menu/index.html?raw'
 import hamburgerMenuJs from './hamburger-menu/index.js?raw'
 import hamburgerMenuCss from './hamburger-menu/styles.css?raw'
+import quizyHtml from './quizy/index.html?raw'
+import quizyJs from './quizy/index.js?raw'
+import quizyCss from './quizy/styles.css?raw'
 
 // HTMLファイル内のパスを調整する関数
 const adjustHtmlPaths = (html: string, quizDir: string) => {
@@ -35,6 +38,11 @@ const quizData = {
     html: hamburgerMenuHtml,
     js: hamburgerMenuJs,
     css: hamburgerMenuCss,
+  },
+  'no-4': {
+    html: quizyHtml,
+    js: quizyJs,
+    css: quizyCss,
   },
 }
 
