@@ -1,3 +1,7 @@
+// Level ☆☆☆☆☆: 正解した時に「正解！」、不正解の時に「不正解...」と表示してください
+
+// 修正箇所： 指定の1箇所のみ（L210）
+
 'use strict';
 
 {
@@ -203,7 +207,7 @@
 
         // 正解ならtrue, 不正解ならfalseをcheckCorrectに格納
         const correctNumber = quizArray[selectedQuiz].correctNumber
-        const isCorrect = correctNumber === selectedAnswerNumber;
+        const isCorrect = ; // TODO: ここに適切な条件式を入れてください
 
         // 回答欄にテキストやclass名を付与
         answerText.innerText = quizArray[selectedQuiz].answers[correctNumber];
