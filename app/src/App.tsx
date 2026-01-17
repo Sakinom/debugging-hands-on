@@ -13,6 +13,9 @@ import hamburgerMenuCss from './hamburger-menu/styles.css?raw'
 import quizyHtml from './quizy/index.html?raw'
 import quizyJs from './quizy/index.js?raw'
 import quizyCss from './quizy/styles.css?raw'
+import rootHtml from './index.html?raw'
+import rootJs from './index.js?raw'
+import rootCss from './styles.css?raw'
 
 // HTMLファイル内のパスを調整する関数
 const adjustHtmlPaths = (html: string, quizDir: string) => {
@@ -59,6 +62,11 @@ function App() {
       files[`/${quizId}/index.js`] = data.js
       files[`/${quizId}/styles.css`] = data.css
     })
+
+    // ルートのindex.html、index.js、styles.cssを配置
+    files['/index.html'] = rootHtml
+    files['/index.js'] = rootJs
+    files['/styles.css'] = rootCss
 
     return files
   }, [])
